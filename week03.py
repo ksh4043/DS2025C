@@ -1,18 +1,6 @@
-import array
+groups = ['HOT', 'Seventeen', 'Black Pink', 'NJZ']
+# ratings = [1, 2, 4, 3, 12]
+ratings = [1, 2, 4, 3]
 
-arr = array.array('i',[99, 0, -7, 0, 16])   # 키워드 'i'는 integer, 'f'면 float
-# for i in range(len(arr)):
-#     print(f"{arr[i]:2} {id(arr[i])}")
-
-def move_zeros(a_list):
-    zero_index = 0
-    for index, n in enumerate(a_list):
-        if n != 0:
-            a_list[zero_index] = n
-            if zero_index != index:
-                a_list[index] = 0
-            zero_index += 1
-    return a_list
-
-arr = move_zeros(arr)
-print(arr)
+group_rating = list(zip(groups, ratings))   # zip -> 각 list의 대응 되는 인덱스 두개를 tuple 형태로 리턴. len 값이 작은 list 기준
+print(group_rating)
