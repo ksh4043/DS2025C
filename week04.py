@@ -21,13 +21,24 @@ class LinkedList:
          current = self.head
          out_texts = ""
          while current is not None:
-             out_texts = out_texts + str(current.data) + " -> "
+             out_texts = out_texts + f"{str(current.data)} -> "
              current = current.link
          # return "Linked list!"
          return out_texts + "END"
+
+    def search(self, target):
+         current = self.head
+         while current.link:
+             if target == current.data:
+                 return f"{target}을(를) 찾았습니다!"
+             else:
+                 current = current.link  # move current
+         return f"{target}은(는) 링크드 리스트 안에 존재하지 않습니다~"
 
 ll = LinkedList()
 ll.append(8)
 ll.append(10)
 ll.append(-9)
 print(ll)
+print(ll.search(99))
+print(ll.search(10))
