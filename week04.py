@@ -1,3 +1,5 @@
+import random
+
 class Node:
     def __init__(self, data, link=None):
         self.data = data
@@ -28,7 +30,7 @@ class LinkedList:
 
     def search(self, target):
          current = self.head
-         while current.link:
+         while current:
              if target == current.data:
                  return f"{target}을(를) 찾았습니다!"
              else:
@@ -36,9 +38,8 @@ class LinkedList:
          return f"{target}은(는) 링크드 리스트 안에 존재하지 않습니다~"
 
 ll = LinkedList()
-ll.append(8)
-ll.append(10)
-ll.append(-9)
+for _ in range(10):
+    ll.append(random.randint(1, 30))
+
 print(ll)
-print(ll.search(99))
-print(ll.search(10))
+print(ll.search(7))
