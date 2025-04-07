@@ -1,11 +1,12 @@
-s1 = list()
-print(len(s1))
+def check_parentheses(expression):
+    stack = []
+    brackets = {')' : '(', ']' : '[', '}' : '{'}
+    for letter in expression :
+        if letter in brackets.values():
+            stack.append(letter)
+        if letter in brackets.keys():
+            if not stack or stack.pop() != brackets[letter] :
+                return False
+    return not stack
 
-s1.append("Data structure") # push
-s1.append("DataBase") # push
-
-print(len(s1)) # size
-print(s1[-1]) # peek
-print(s1)
-print(s1.pop())
-print(s1)
+print(check_parentheses("[2*{34+5}-15+(1+9)])"))
