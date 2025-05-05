@@ -1,8 +1,23 @@
+# def is_queue_full() -> bool :
+#     global SIZE, rear
+#     if rear == SIZE - 1:
+#         return True
+#     else:
+#         return False
+
+
 def is_queue_full() -> bool :
-    global SIZE, rear
-    if rear == SIZE - 1:
+    global SIZE, rear, front
+    if rear != SIZE - 1:
+        return False
+    elif rear == SIZE - 1 and front == -1:
         return True
     else:
+        for i in range(front+1, SIZE):
+            queue[i-1] = queue[i]
+            queue[i] = None
+        front = front - 1
+        rear = rear - 1
         return False
 
 
