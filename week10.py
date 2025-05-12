@@ -21,17 +21,14 @@ def search(value):
 
     while True:
         if value == current.data:
-            print(f"{value}를 찾았습니다!")
-            break
+            return True
         elif value < current.data:
             if current.left is None:
-                print(f"{value}가 해당 트리에 존재하지 않습니다!")
-                break
+                return False
             current = current.left
         else:
             if current.right is None:
-                print(f"{value}가 해당 트리에 존재하지 않습니다!")
-                break
+                return False
             current = current.right
 
 
@@ -73,4 +70,7 @@ if __name__ == "__main__":
     print()
 
     number = int(input("찾는 값 입력 : "))
-    search(number)
+    if search(number) :
+        print(print(f"{number}를 찾았습니다!"))
+    else:
+        print(f"{number}가 해당 트리에 존재하지 않습니다!")
