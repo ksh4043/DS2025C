@@ -15,10 +15,6 @@ class TreeNode:
 def search(value):
     current = root
 
-    if current is None:
-        print("이진 트리가 비어있습니다")
-        return
-
     while True:
         if value == current.data:
             return True
@@ -58,8 +54,25 @@ def insert(process, value):
     return process
 
 
+def delete(node, value):
+    if node is None:
+        return None
+
+    if value < node.data:
+        node.left = delete(node.left, value)
+    elif value > node.data:
+        node.right = delete(node.right, value)
+    else: # 삭제할 노드 발견
+        if node.right is None:
+            return node.left
+        elif node.left is None:
+            return node.right
+
+    return node
+
+
 if __name__ == "__main__":
-    numbers = [10, 15, 8, 3, 9]
+    numbers = [10, 15, 8, 3, 9, 14]
     root = None
 
     for number in numbers:
@@ -69,8 +82,14 @@ if __name__ == "__main__":
     post_order(root)
     print()
 
-    number = int(input("찾는 값 입력 : "))
-    if search(number) :
-        print(print(f"{number}를 찾았습니다!"))
+    find_number = int(input("찾는 값 입력 : "))
+    if search(find_number) :
+        print(f"{find_number}를 찾았습니다!")
     else:
-        print(f"{number}가 해당 트리에 존재하지 않습니다!")
+        print(f"{find_number}가 해당 트리에 존재하지 않습니다!")
+
+    delete_number = int(input("제거할 값 입력 : "))
+    root = delete(root, delete_number)
+
+    post_order(root)
+    print()
