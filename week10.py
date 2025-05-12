@@ -12,8 +12,8 @@ class TreeNode:
         self.right = None
 
 
-def search(node, value):
-    current = node
+def search(value):
+    current = root
 
     if current is None:
         print("이진 트리가 비어있습니다")
@@ -71,6 +71,6 @@ if __name__ == "__main__":
     print("BST 구성 완료")
     post_order(root)
     print()
-    search(root, 55)
-    search(root, 3)
-    search(root, 10)
+
+    number = int(input("찾는 값 입력 : "))
+    search(number)
