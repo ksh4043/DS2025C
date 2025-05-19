@@ -30,8 +30,8 @@ for r in range(G3.SIZE):
         print(G3.graph[r][c], end = ' ')
     print()
 
-G_self.graph[0][1] = 1
-G_self.graph[1][0] = 1; G_self.graph[1][3] = 1
+G_self.graph[0][3] = 1
+G_self.graph[1][2] = 1; G_self.graph[1][3] = 1
 G_self.graph[2][1] = 1
 G_self.graph[3][0] = 1; G_self.graph[3][1] = 1
 
