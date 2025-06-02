@@ -19,36 +19,18 @@ def print_graph(g) :
 		print()
 	print()
 
-def find_vertex(g, find_vtx) :
-	stack = list()
-	visited_ary = list()
 
-	i = 0	# 시작 정점
-	stack.append(i)
-	visited_ary.append(i)
+def dfs(g, current, visited):
+    visited.append(current)
+    for vertex in range(graph_size):
+        if g.graph[current][vertex] > 0 and vertex not in visited:
+            dfs(g, vertex, visited)
 
-	while stack:
-		next = None
-		for j in range(graph_size):
-			if g.graph[i][j] != 0:  # 연결되어 있으면
-				if j in visited_ary:	# 방문한 적이 있는 정점
-					pass
-				else :			# 방문한 적이 없으면
-					next = j  #  다음 정점으로 지정
-					break
 
-		if next is not None:				# 다음에 방문할 정점이 있는 경우
-			i = next
-			stack.append(i)  # push
-			visited_ary.append(i)  # push
-		else :					# 다음에 방문할 정점이 없는 경우
-			i = stack.pop()
-
-	if find_vtx in visited_ary:
-		return True
-	else :
-		return False
-
+def find_vertex(g, find_vtx):
+    visited_array = list()
+    dfs(g, 0, visited_array)
+    return find_vtx in visited_array  # True or False
 
 g1 = None
 name_ary = ['인천', '서울', '강릉', '대전', '광주', '부산']
